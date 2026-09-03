@@ -1,0 +1,31 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2025-2026 Amal Dev Haridevan
+
+---
+# sweep configuration for gazebo_envpool_bm.py
+# n_envs and batch_size will be swept from start to end with given step
+# env_name is fixed for the sweep
+# num_threads and thread_affinity are also swept
+# total number of runs = product( (end - start)/step + 1 )) for each parameter
+
+n_envs:
+  start: 1
+  end: 128
+  step: 2 #base for log scale, will be multiplied by 2 in each step
+  log_scale: true
+batch_size:
+  start: 4
+  end: 32
+  step: 4
+  log_scale: false
+num_threads:
+  start: 12
+  end: 96
+  step: 12
+  log_scale: false
+thread_affinity:
+  start: 0
+  end: 0
+  step: 1
+  log_scale: false
+env_name: "GazeboPoolHoverEnv-v0"

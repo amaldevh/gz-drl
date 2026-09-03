@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <model name="pro_gate2_mesh">
+    <static>true</static>
+    
+
+    <link name="frame">
+    
+      <collision name="frame_collision">
+      <pose>0 0 -2. 0 0 1.57</pose>
+      <surface>
+        <contact>
+          <collide_bitmask>0x00</collide_bitmask>
+        </contact>
+      </surface>
+        <geometry>
+          <mesh>
+            <uri>model://materials/textures/gate2.dae</uri>
+            <scale>1. 1. 1</scale>
+          </mesh>
+          
+        </geometry>
+      </collision>
+
+      <visual name="frame_visual">
+      <pose>0 0 -2. 0 0 1.57</pose>
+        <geometry>
+          <mesh>
+            <uri>model://materials/textures/gate2.dae</uri>
+            <scale>1. 1. 1</scale>
+          </mesh>
+          
+        </geometry>
+   
+      </visual>
+    </link>
+  </model>
+</sdf>

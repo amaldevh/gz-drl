@@ -1,0 +1,1648 @@
+<sdf version='1.12'>
+  <model name='omav'>
+    <link name='omav/base_link'>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>2.2999999999999998</mass>
+        <inertia>
+          <ixx>0.0074999999999999997</ixx>
+          <ixy>-3.4208000000000002e-05</ixy>
+          <ixz>2.4695e-05</ixz>
+          <iyy>0.010939000000000001</iyy>
+          <iyz>-3.8825999999999999e-06</iyz>
+          <izz>0.013690000000000001</izz>
+        </inertia>
+      </inertial>
+      <collision name='omav/base_link_inertia_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.22 0.22 0.34999999999999998</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='omav/base_link_inertia_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/omav_core.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='omav/tilt_unit_0_revolutejoint' type='revolute'>
+      <pose relative_to='omav/base_link'>0 -0.29999999999999999 0 0 0 -1.5707963267995859</pose>
+      <parent>omav/base_link</parent>
+      <child>omav/tilt_unit_0</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='omav/tilt_unit_0'>
+      <pose relative_to='omav/tilt_unit_0_revolutejoint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.27700000000000002</mass>
+        <inertia>
+          <ixx>0.00034256999999999999</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0013205000000000001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0010036999999999999</izz>
+        </inertia>
+      </inertial>
+      <collision name='omav/tilt_unit_0_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0050000000000000001 0.0050000000000000001 0.0050000000000000001</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='omav/tilt_unit_0_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/omav_tiltarm.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='rotor_0_joint' type='revolute'>
+      <pose relative_to='omav/tilt_unit_0'>0 0 0.059999999999999998 0 0 0</pose>
+      <parent>omav/tilt_unit_0</parent>
+      <child>rotor_0</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rotor_0'>
+      <pose relative_to='rotor_0_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0064999999999999997</mass>
+        <inertia>
+          <ixx>2.2154157804999998e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>7.0814709174105009e-05</iyy>
+          <iyz>0</iyz>
+          <izz>7.2932624993605005e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='rotor_0_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.1143</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rotor_0_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.1143 0.1143 0.1143</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='rotor_6_joint' type='revolute'>
+      <pose relative_to='omav/tilt_unit_0'>0 0 -0.059999999999999998 0 0 0</pose>
+      <parent>omav/tilt_unit_0</parent>
+      <child>rotor_6</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rotor_6'>
+      <pose relative_to='rotor_6_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0064999999999999997</mass>
+        <inertia>
+          <ixx>2.2154157804999998e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>7.0814709174105009e-05</iyy>
+          <iyz>0</iyz>
+          <izz>7.2932624993605005e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='rotor_6_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.1143</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rotor_6_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.1143 0.1143 0.1143</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='omav/tilt_unit_1_revolutejoint' type='revolute'>
+      <pose relative_to='omav/base_link'>0 0.29999999999999999 0 0 0 1.57079632679</pose>
+      <parent>omav/base_link</parent>
+      <child>omav/tilt_unit_1</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='omav/tilt_unit_1'>
+      <pose relative_to='omav/tilt_unit_1_revolutejoint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.27700000000000002</mass>
+        <inertia>
+          <ixx>0.00034256999999999999</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0013205000000000001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0010036999999999999</izz>
+        </inertia>
+      </inertial>
+      <collision name='omav/tilt_unit_1_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0050000000000000001 0.0050000000000000001 0.0050000000000000001</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='omav/tilt_unit_1_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/omav_tiltarm.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='rotor_1_joint' type='revolute'>
+      <pose relative_to='omav/tilt_unit_1'>0 0 0.059999999999999998 0 0 0</pose>
+      <parent>omav/tilt_unit_1</parent>
+      <child>rotor_1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rotor_1'>
+      <pose relative_to='rotor_1_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0064999999999999997</mass>
+        <inertia>
+          <ixx>2.2154157804999998e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>7.0814709174105009e-05</iyy>
+          <iyz>0</iyz>
+          <izz>7.2932624993605005e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='rotor_1_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.1143</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rotor_1_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.1143 0.1143 0.1143</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='rotor_7_joint' type='revolute'>
+      <pose relative_to='omav/tilt_unit_1'>0 0 -0.059999999999999998 0 0 0</pose>
+      <parent>omav/tilt_unit_1</parent>
+      <child>rotor_7</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rotor_7'>
+      <pose relative_to='rotor_7_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0064999999999999997</mass>
+        <inertia>
+          <ixx>2.2154157804999998e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>7.0814709174105009e-05</iyy>
+          <iyz>0</iyz>
+          <izz>7.2932624993605005e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='rotor_7_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.1143</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rotor_7_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.1143 0.1143 0.1143</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='omav/tilt_unit_2_revolutejoint' type='revolute'>
+      <pose relative_to='omav/base_link'>0.25980762113520001 0.14999999999999999 0 0 0 0.52359877559000012</pose>
+      <parent>omav/base_link</parent>
+      <child>omav/tilt_unit_2</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='omav/tilt_unit_2'>
+      <pose relative_to='omav/tilt_unit_2_revolutejoint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.27700000000000002</mass>
+        <inertia>
+          <ixx>0.00034256999999999999</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0013205000000000001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0010036999999999999</izz>
+        </inertia>
+      </inertial>
+      <collision name='omav/tilt_unit_2_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0050000000000000001 0.0050000000000000001 0.0050000000000000001</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='omav/tilt_unit_2_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/omav_tiltarm.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='rotor_2_joint' type='revolute'>
+      <pose relative_to='omav/tilt_unit_2'>0 0 0.059999999999999998 0 0 0</pose>
+      <parent>omav/tilt_unit_2</parent>
+      <child>rotor_2</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rotor_2'>
+      <pose relative_to='rotor_2_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0064999999999999997</mass>
+        <inertia>
+          <ixx>2.2154157804999998e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>7.0814709174105009e-05</iyy>
+          <iyz>0</iyz>
+          <izz>7.2932624993605005e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='rotor_2_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.1143</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rotor_2_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.1143 0.1143 0.1143</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Orange</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='rotor_8_joint' type='revolute'>
+      <pose relative_to='omav/tilt_unit_2'>0 0 -0.059999999999999998 0 0 0</pose>
+      <parent>omav/tilt_unit_2</parent>
+      <child>rotor_8</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rotor_8'>
+      <pose relative_to='rotor_8_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0064999999999999997</mass>
+        <inertia>
+          <ixx>2.2154157804999998e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>7.0814709174105009e-05</iyy>
+          <iyz>0</iyz>
+          <izz>7.2932624993605005e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='rotor_8_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.1143</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rotor_8_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.1143 0.1143 0.1143</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Orange</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='omav/tilt_unit_3_revolutejoint' type='revolute'>
+      <pose relative_to='omav/base_link'>-0.25980762113520001 -0.14999999999999999 0 0 0 -2.617993877989587</pose>
+      <parent>omav/base_link</parent>
+      <child>omav/tilt_unit_3</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='omav/tilt_unit_3'>
+      <pose relative_to='omav/tilt_unit_3_revolutejoint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.27700000000000002</mass>
+        <inertia>
+          <ixx>0.00034256999999999999</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0013205000000000001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0010036999999999999</izz>
+        </inertia>
+      </inertial>
+      <collision name='omav/tilt_unit_3_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0050000000000000001 0.0050000000000000001 0.0050000000000000001</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='omav/tilt_unit_3_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/omav_tiltarm.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='rotor_3_joint' type='revolute'>
+      <pose relative_to='omav/tilt_unit_3'>0 0 0.059999999999999998 0 0 0</pose>
+      <parent>omav/tilt_unit_3</parent>
+      <child>rotor_3</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rotor_3'>
+      <pose relative_to='rotor_3_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0064999999999999997</mass>
+        <inertia>
+          <ixx>2.2154157804999998e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>7.0814709174105009e-05</iyy>
+          <iyz>0</iyz>
+          <izz>7.2932624993605005e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='rotor_3_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.1143</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rotor_3_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.1143 0.1143 0.1143</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='rotor_9_joint' type='revolute'>
+      <pose relative_to='omav/tilt_unit_3'>0 0 -0.059999999999999998 0 0 0</pose>
+      <parent>omav/tilt_unit_3</parent>
+      <child>rotor_9</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rotor_9'>
+      <pose relative_to='rotor_9_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0064999999999999997</mass>
+        <inertia>
+          <ixx>2.2154157804999998e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>7.0814709174105009e-05</iyy>
+          <iyz>0</iyz>
+          <izz>7.2932624993605005e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='rotor_9_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.1143</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rotor_9_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.1143 0.1143 0.1143</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='omav/tilt_unit_4_revolutejoint' type='revolute'>
+      <pose relative_to='omav/base_link'>0.25980762113520001 -0.14999999999999999 0 0 0 -0.52359877559958634</pose>
+      <parent>omav/base_link</parent>
+      <child>omav/tilt_unit_4</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='omav/tilt_unit_4'>
+      <pose relative_to='omav/tilt_unit_4_revolutejoint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.27700000000000002</mass>
+        <inertia>
+          <ixx>0.00034256999999999999</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0013205000000000001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0010036999999999999</izz>
+        </inertia>
+      </inertial>
+      <collision name='omav/tilt_unit_4_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0050000000000000001 0.0050000000000000001 0.0050000000000000001</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='omav/tilt_unit_4_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/omav_tiltarm.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='rotor_10_joint' type='revolute'>
+      <pose relative_to='omav/tilt_unit_4'>0 0 -0.059999999999999998 0 0 0</pose>
+      <parent>omav/tilt_unit_4</parent>
+      <child>rotor_10</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rotor_10'>
+      <pose relative_to='rotor_10_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0064999999999999997</mass>
+        <inertia>
+          <ixx>2.2154157804999998e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>7.0814709174105009e-05</iyy>
+          <iyz>0</iyz>
+          <izz>7.2932624993605005e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='rotor_10_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.1143</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rotor_10_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.1143 0.1143 0.1143</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Orange</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='rotor_4_joint' type='revolute'>
+      <pose relative_to='omav/tilt_unit_4'>0 0 0.059999999999999998 0 0 0</pose>
+      <parent>omav/tilt_unit_4</parent>
+      <child>rotor_4</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rotor_4'>
+      <pose relative_to='rotor_4_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0064999999999999997</mass>
+        <inertia>
+          <ixx>2.2154157804999998e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>7.0814709174105009e-05</iyy>
+          <iyz>0</iyz>
+          <izz>7.2932624993605005e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='rotor_4_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.1143</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rotor_4_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.1143 0.1143 0.1143</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Orange</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='omav/tilt_unit_5_revolutejoint' type='revolute'>
+      <pose relative_to='omav/base_link'>-0.25980762113520001 0.14999999999999999 0 0 0 2.6179938779900001</pose>
+      <parent>omav/base_link</parent>
+      <child>omav/tilt_unit_5</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='omav/tilt_unit_5'>
+      <pose relative_to='omav/tilt_unit_5_revolutejoint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.27700000000000002</mass>
+        <inertia>
+          <ixx>0.00034256999999999999</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0013205000000000001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0010036999999999999</izz>
+        </inertia>
+      </inertial>
+      <collision name='omav/tilt_unit_5_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0050000000000000001 0.0050000000000000001 0.0050000000000000001</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='omav/tilt_unit_5_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/omav_tiltarm.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='rotor_11_joint' type='revolute'>
+      <pose relative_to='omav/tilt_unit_5'>0 0 -0.059999999999999998 0 0 0</pose>
+      <parent>omav/tilt_unit_5</parent>
+      <child>rotor_11</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rotor_11'>
+      <pose relative_to='rotor_11_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0064999999999999997</mass>
+        <inertia>
+          <ixx>2.2154157804999998e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>7.0814709174105009e-05</iyy>
+          <iyz>0</iyz>
+          <izz>7.2932624993605005e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='rotor_11_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.1143</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rotor_11_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.1143 0.1143 0.1143</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='rotor_5_joint' type='revolute'>
+      <pose relative_to='omav/tilt_unit_5'>0 0 0.059999999999999998 0 0 0</pose>
+      <parent>omav/tilt_unit_5</parent>
+      <child>rotor_5</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rotor_5'>
+      <pose relative_to='rotor_5_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0064999999999999997</mass>
+        <inertia>
+          <ixx>2.2154157804999998e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>7.0814709174105009e-05</iyy>
+          <iyz>0</iyz>
+          <izz>7.2932624993605005e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='rotor_5_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.1143</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rotor_5_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.1143 0.1143 0.1143</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    
+    <plugin name='right_tilt_unit_model' filename='librotors_gazebo_motor_model.so'>
+      <robotNamespace>omav</robotNamespace>
+      <jointName>omav/tilt_unit_0_revolutejoint</jointName>
+      <linkName>omav/tilt_unit_0</linkName>
+      <turningDirection>ccw</turningDirection>
+      <motorType>position</motorType>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>12</motorNumber>
+      <motorSpeedPubTopic>/tilt_motor_0/velocity</motorSpeedPubTopic>
+      <motorPositionPubTopic>/tilt_motor_0/position</motorPositionPubTopic>
+      <joint_control_pid>
+        <p>1.0</p>
+        <i>0.0</i>
+        <d>0.01</d>
+        <iMax>1.0</iMax>
+        <iMin>-1.0</iMin>
+        <cmdMax>2.0</cmdMax>
+        <cmdMin>-2.0</cmdMin>
+      </joint_control_pid>
+    </plugin>
+    <plugin name='right_upper_motor_model' filename='librotors_gazebo_motor_model.so'>
+      <robotNamespace>omav</robotNamespace>
+      <jointName>rotor_0_joint</jointName>
+      <linkName>rotor_0</linkName>
+      <turningDirection>ccw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>1700</maxRotVelocity>
+      <motorConstant>7.2e-06</motorConstant>
+      <momentConstant>0.015</momentConstant>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>0</motorNumber>
+      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <motorSpeedPubTopic>/motor_speed/0_upper</motorSpeedPubTopic>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+    </plugin>
+    <plugin name='right_lower_motor_model' filename='librotors_gazebo_motor_model.so'>
+      <robotNamespace>omav</robotNamespace>
+      <jointName>rotor_6_joint</jointName>
+      <linkName>rotor_6</linkName>
+      <turningDirection>cw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>1700</maxRotVelocity>
+      <motorConstant>7.2e-06</motorConstant>
+      <momentConstant>0.005</momentConstant>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>6</motorNumber>
+      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <motorSpeedPubTopic>/motor_speed/0_lower</motorSpeedPubTopic>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+    </plugin>
+    <plugin name='left_tilt_unit_model' filename='librotors_gazebo_motor_model.so'>
+      <robotNamespace>omav</robotNamespace>
+      <jointName>omav/tilt_unit_1_revolutejoint</jointName>
+      <linkName>omav/tilt_unit_1</linkName>
+      <turningDirection>ccw</turningDirection>
+      <motorType>position</motorType>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>13</motorNumber>
+      <motorSpeedPubTopic>/tilt_motor_1/velocity</motorSpeedPubTopic>
+      <motorPositionPubTopic>/tilt_motor_1/position</motorPositionPubTopic>
+      <joint_control_pid>
+        <p>1.0</p>
+        <i>0.0</i>
+        <d>0.01</d>
+        <iMax>1.0</iMax>
+        <iMin>-1.0</iMin>
+        <cmdMax>2.0</cmdMax>
+        <cmdMin>-2.0</cmdMin>
+      </joint_control_pid>
+    </plugin>
+    <plugin name='left_upper_motor_model' filename='librotors_gazebo_motor_model.so'>
+      <robotNamespace>omav</robotNamespace>
+      <jointName>rotor_1_joint</jointName>
+      <linkName>rotor_1</linkName>
+      <turningDirection>cw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>1700</maxRotVelocity>
+      <motorConstant>7.2e-06</motorConstant>
+      <momentConstant>0.015</momentConstant>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>1</motorNumber>
+      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <motorSpeedPubTopic>/motor_speed/1_upper</motorSpeedPubTopic>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+    </plugin>
+    <plugin name='left_lower_motor_model' filename='librotors_gazebo_motor_model.so'>
+      <robotNamespace>omav</robotNamespace>
+      <jointName>rotor_7_joint</jointName>
+      <linkName>rotor_7</linkName>
+      <turningDirection>ccw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>1700</maxRotVelocity>
+      <motorConstant>7.2e-06</motorConstant>
+      <momentConstant>0.005</momentConstant>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>7</motorNumber>
+      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <motorSpeedPubTopic>/motor_speed/1_lower</motorSpeedPubTopic>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+    </plugin>
+    <plugin name='front_left_tilt_unit_model' filename='librotors_gazebo_motor_model.so'>
+      <robotNamespace>omav</robotNamespace>
+      <jointName>omav/tilt_unit_2_revolutejoint</jointName>
+      <linkName>omav/tilt_unit_2</linkName>
+      <turningDirection>ccw</turningDirection>
+      <motorType>position</motorType>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>14</motorNumber>
+      <motorSpeedPubTopic>/tilt_motor_2/velocity</motorSpeedPubTopic>
+      <motorPositionPubTopic>/tilt_motor_2/position</motorPositionPubTopic>
+      <joint_control_pid>
+        <p>1.0</p>
+        <i>0.0</i>
+        <d>0.01</d>
+        <iMax>1.0</iMax>
+        <iMin>-1.0</iMin>
+        <cmdMax>2.0</cmdMax>
+        <cmdMin>-2.0</cmdMin>
+      </joint_control_pid>
+    </plugin>
+    <plugin name='front_left_upper_motor_model' filename='librotors_gazebo_motor_model.so'>
+      <robotNamespace>omav</robotNamespace>
+      <jointName>rotor_2_joint</jointName>
+      <linkName>rotor_2</linkName>
+      <turningDirection>ccw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>1700</maxRotVelocity>
+      <motorConstant>7.2e-06</motorConstant>
+      <momentConstant>0.015</momentConstant>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>2</motorNumber>
+      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <motorSpeedPubTopic>/motor_speed/2_upper</motorSpeedPubTopic>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+    </plugin>
+    <plugin name='front_left_lower_motor_model' filename='librotors_gazebo_motor_model.so'>
+      <robotNamespace>omav</robotNamespace>
+      <jointName>rotor_8_joint</jointName>
+      <linkName>rotor_8</linkName>
+      <turningDirection>cw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>1700</maxRotVelocity>
+      <motorConstant>7.2e-06</motorConstant>
+      <momentConstant>0.005</momentConstant>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>8</motorNumber>
+      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <motorSpeedPubTopic>/motor_speed/2_lower</motorSpeedPubTopic>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+    </plugin>
+    <plugin name='back_right_tilt_unit_model' filename='librotors_gazebo_motor_model.so'>
+      <robotNamespace>omav</robotNamespace>
+      <jointName>omav/tilt_unit_3_revolutejoint</jointName>
+      <linkName>omav/tilt_unit_3</linkName>
+      <turningDirection>ccw</turningDirection>
+      <motorType>position</motorType>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>15</motorNumber>
+      <motorSpeedPubTopic>/tilt_motor_3/velocity</motorSpeedPubTopic>
+      <motorPositionPubTopic>/tilt_motor_3/position</motorPositionPubTopic>
+      <joint_control_pid>
+        <p>1.0</p>
+        <i>0.0</i>
+        <d>0.01</d>
+        <iMax>1.0</iMax>
+        <iMin>-1.0</iMin>
+        <cmdMax>2.0</cmdMax>
+        <cmdMin>-2.0</cmdMin>
+      </joint_control_pid>
+    </plugin>
+    <plugin name='back_right_upper_motor_model' filename='librotors_gazebo_motor_model.so'>
+      <robotNamespace>omav</robotNamespace>
+      <jointName>rotor_3_joint</jointName>
+      <linkName>rotor_3</linkName>
+      <turningDirection>cw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>1700</maxRotVelocity>
+      <motorConstant>7.2e-06</motorConstant>
+      <momentConstant>0.015</momentConstant>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>3</motorNumber>
+      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <motorSpeedPubTopic>/motor_speed/3_upper</motorSpeedPubTopic>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+    </plugin>
+    <plugin name='back_right_lower_motor_model' filename='librotors_gazebo_motor_model.so'>
+      <robotNamespace>omav</robotNamespace>
+      <jointName>rotor_9_joint</jointName>
+      <linkName>rotor_9</linkName>
+      <turningDirection>ccw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>1700</maxRotVelocity>
+      <motorConstant>7.2e-06</motorConstant>
+      <momentConstant>0.005</momentConstant>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>9</motorNumber>
+      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <motorSpeedPubTopic>/motor_speed/3_lower</motorSpeedPubTopic>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+    </plugin>
+    <plugin name='front_right_tilt_unit_model' filename='librotors_gazebo_motor_model.so'>
+      <robotNamespace>omav</robotNamespace>
+      <jointName>omav/tilt_unit_4_revolutejoint</jointName>
+      <linkName>omav/tilt_unit_4</linkName>
+      <turningDirection>ccw</turningDirection>
+      <motorType>position</motorType>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>16</motorNumber>
+      <motorSpeedPubTopic>/tilt_motor_4/velocity</motorSpeedPubTopic>
+      <motorPositionPubTopic>/tilt_motor_4/position</motorPositionPubTopic>
+      <joint_control_pid>
+        <p>1.0</p>
+        <i>0.0</i>
+        <d>0.01</d>
+        <iMax>1.0</iMax>
+        <iMin>-1.0</iMin>
+        <cmdMax>2.0</cmdMax>
+        <cmdMin>-2.0</cmdMin>
+      </joint_control_pid>
+    </plugin>
+    <plugin name='front_right_upper_motor_model' filename='librotors_gazebo_motor_model.so'>
+      <robotNamespace>omav</robotNamespace>
+      <jointName>rotor_4_joint</jointName>
+      <linkName>rotor_4</linkName>
+      <turningDirection>cw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>1700</maxRotVelocity>
+      <motorConstant>7.2e-06</motorConstant>
+      <momentConstant>0.015</momentConstant>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>4</motorNumber>
+      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <motorSpeedPubTopic>/motor_speed/4_upper</motorSpeedPubTopic>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+    </plugin>
+    <plugin name='front_right_lower_motor_model' filename='librotors_gazebo_motor_model.so'>
+      <robotNamespace>omav</robotNamespace>
+      <jointName>rotor_10_joint</jointName>
+      <linkName>rotor_10</linkName>
+      <turningDirection>ccw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>1700</maxRotVelocity>
+      <motorConstant>7.2e-06</motorConstant>
+      <momentConstant>0.005</momentConstant>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>10</motorNumber>
+      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <motorSpeedPubTopic>/motor_speed/4_lower</motorSpeedPubTopic>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+    </plugin>
+    <plugin name='back_left_tilt_unit_model' filename='librotors_gazebo_motor_model.so'>
+      <robotNamespace>omav</robotNamespace>
+      <jointName>omav/tilt_unit_5_revolutejoint</jointName>
+      <linkName>omav/tilt_unit_5</linkName>
+      <turningDirection>ccw</turningDirection>
+      <motorType>position</motorType>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>17</motorNumber>
+      <motorSpeedPubTopic>/tilt_motor_5/velocity</motorSpeedPubTopic>
+      <motorPositionPubTopic>/tilt_motor_5/position</motorPositionPubTopic>
+      <joint_control_pid>
+        <p>1.0</p>
+        <i>0.0</i>
+        <d>0.01</d>
+        <iMax>1.0</iMax>
+        <iMin>-1.0</iMin>
+        <cmdMax>2.0</cmdMax>
+        <cmdMin>-2.0</cmdMin>
+      </joint_control_pid>
+    </plugin>
+    <plugin name='back_left_upper_motor_model' filename='librotors_gazebo_motor_model.so'>
+      <robotNamespace>omav</robotNamespace>
+      <jointName>rotor_5_joint</jointName>
+      <linkName>rotor_5</linkName>
+      <turningDirection>ccw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>1700</maxRotVelocity>
+      <motorConstant>7.2e-06</motorConstant>
+      <momentConstant>0.015</momentConstant>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>5</motorNumber>
+      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <motorSpeedPubTopic>/motor_speed/5_upper</motorSpeedPubTopic>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+    </plugin>
+    <plugin name='back_left_lower_motor_model' filename='librotors_gazebo_motor_model.so'>
+      <robotNamespace>omav</robotNamespace>
+      <jointName>rotor_11_joint</jointName>
+      <linkName>rotor_11</linkName>
+      <turningDirection>cw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>1700</maxRotVelocity>
+      <motorConstant>7.2e-06</motorConstant>
+      <momentConstant>0.005</momentConstant>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>11</motorNumber>
+      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <motorSpeedPubTopic>/motor_speed/5_lower</motorSpeedPubTopic>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+    </plugin>
+    <plugin name='mavlink_interface' filename='librotors_gazebo_mavlink_interface.so'>
+      <robotNamespace>omav</robotNamespace>
+      <imu_rate>102</imu_rate>
+      <imuSubTopic>/imu</imuSubTopic>
+      <mavlink_addr>INADDR_ANY</mavlink_addr>
+      <mavlink_udp_port>14560</mavlink_udp_port>
+      <motorSpeedCommandPubTopic>/gazebo/command/motor_speed</motorSpeedCommandPubTopic>
+      <control_channels>
+        <channel name='rotor0'>
+          <input_index>0</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>1700</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+        <channel name='rotor1'>
+          <input_index>1</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>1700</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+        <channel name='rotor2'>
+          <input_index>2</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>1700</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+        <channel name='rotor3'>
+          <input_index>3</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>1700</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+        <channel name='rotor4'>
+          <input_index>4</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>1700</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+        <channel name='rotor5'>
+          <input_index>5</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>1700</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+        <channel name='rotor6'>
+          <input_index>6</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>1700</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+        <channel name='rotor7'>
+          <input_index>7</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>1700</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+        <channel name='rotor8'>
+          <input_index>8</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>1700</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+        <channel name='rotor9'>
+          <input_index>9</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>1700</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+        <channel name='rotor10'>
+          <input_index>10</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>1700</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+        <channel name='rotor11'>
+          <input_index>11</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>1700</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+        <channel name='tilt_unit0'>
+          <input_index>12</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>31.4159</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>0</zero_position_armed>
+          <joint_control_type>position</joint_control_type>
+        </channel>
+        <channel name='tilt_unit1'>
+          <input_index>13</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>31.4159</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>0</zero_position_armed>
+          <joint_control_type>position</joint_control_type>
+        </channel>
+        <channel name='tilt_unit2'>
+          <input_index>14</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>31.4159</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>0</zero_position_armed>
+          <joint_control_type>position</joint_control_type>
+        </channel>
+        <channel name='tilt_unit3'>
+          <input_index>15</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>31.4159</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>0</zero_position_armed>
+          <joint_control_type>position</joint_control_type>
+        </channel>
+        <channel name='tilt_unit4'>
+          <input_index>16</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>31.4159</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>0</zero_position_armed>
+          <joint_control_type>position</joint_control_type>
+        </channel>
+        <channel name='tilt_unit5'>
+          <input_index>17</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>31.4159</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>0</zero_position_armed>
+          <joint_control_type>position</joint_control_type>
+        </channel>
+      </control_channels>
+    </plugin>
+    <frame name='omav/base_joint' attached_to='omav/base_link'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='omav/base_link_inertia' attached_to='omav/base_joint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+  </model>
+</sdf>

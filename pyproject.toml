@@ -1,0 +1,86 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2025-2026 Amal Dev Haridevan
+
+[build-system]
+requires = [
+  "scikit-build-core>=0.10",
+  "pybind11>=2.13,<4",
+]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "gzdrl"
+version = "1.0.0"
+description = "High-throughput reinforcement learning environments for Gazebo"
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+license = "MIT"
+license-files = [
+  "LICENSE",
+  "THIRD_PARTY_NOTICES.md",
+  "LICENSES/*.txt",
+]
+authors = [
+  { name = "Amal Dev Haridevan", email = "haridevanamaldev@gmail.com" },
+]
+keywords = ["gazebo", "reinforcement-learning", "robotics", "simulation"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: C++",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "dm-env>=1.6",
+  "gym>=0.26,<0.27",
+  "gymnasium>=0.28",
+  "numpy>=1.24,<3",
+  "optree>=0.13",
+  "packaging>=23",
+  "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+rl = [
+  "stable-baselines3>=2.3",
+  "tensorboard>=2.14",
+]
+examples = [
+  "stable-baselines3>=2.3",
+  "tensorboard>=2.14",
+  "matplotlib>=3.7",
+  "tqdm>=4.65",
+  "onnx>=1.15",
+  "pandas>=2",
+  "PyYAML>=6",
+]
+test = ["pytest>=7"]
+
+[project.urls]
+Homepage = "https://github.com/amaldevh/gzdrl"
+Repository = "https://github.com/amaldevh/gzdrl"
+
+[tool.scikit-build]
+minimum-version = "build-system.requires"
+build-dir = "build/{wheel_tag}"
+editable.rebuild = true
+editable.verbose = false
+wheel.packages = []
+sdist.exclude = [
+  "/_docs",
+  "/docs",
+  "/examples",
+  "/experiments_paper",
+  "/tests",
+  "/_lib",
+  "/build",
+]
+
+[tool.scikit-build.cmake.define]
+BUILD_TESTING = "OFF"

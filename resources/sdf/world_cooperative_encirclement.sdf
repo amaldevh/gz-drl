@@ -1,0 +1,57 @@
+<sdf version="1.9">
+  <world name="world_cooperative_encirclement">
+    <physics type="dart">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>0</real_time_factor>
+      <real_time_update_rate>5000000</real_time_update_rate>
+      <dart>
+        <solver><solver_type>dantzig</solver_type></solver>
+        <collision_detector>bullet</collision_detector>
+      </dart>
+    </physics>
+
+    <plugin name="gz::sim::systems::Physics" filename="gz-sim-physics-system">
+        <engine>
+          <filename>gz-physics-dartsim-plugin</filename>
+        </engine>
+    </plugin>
+    
+    <model name="ground_plane">
+    <pose>0 0 0 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.8 0.8 0.8 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model> 
+
+    <gravity>0 0 -9.82</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type="adiabatic" />
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.8 1</background>
+      <shadows>false</shadows>
+    </scene>
+
+  </world>
+</sdf>

@@ -1,0 +1,69 @@
+quadrotor_ocp.json
+GazeboPoolTrajectoryTrackingEnv-v0
+GazeboPoolPayloadTransportEnv-v0
+GazeboPoolPayloadTransportLLEnv-v0
+GazeboPoolTrajectoryTrackingLLEnv-v0
+plots_ral
+_build
+_doxygen
+build_initial
+build_revised
+# model weights and logs
+training_results
+hardware_results
+build
+_lib
+dist
+wheelhouse
+*.whl
+*.egg-info
+acados_build
+acados_ocp.json
+# Prerequisites
+*.d
+.vscode
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+*events.out.tfevents*
+# Precompiled Headers
+*.gch
+*.pch
+log
+# Linker files
+*.ilk
+
+# Debugger Files
+*.pdb
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# debug information files
+*.dwo
+
+# py
+__pycache__
+
+# Sphinx documentation build
+docs/_build/

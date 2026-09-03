@@ -1,0 +1,39 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2025-2026 Amal Dev Haridevan
+
+name: GazeboPoolHover
+
+defaults:
+  # Match the structure used by OmniDrones' built-in Hover task.
+  - /base/env_base@_here_
+  - /base/sim_base@_here_
+
+env:
+  num_envs: 128
+
+  # Spawn and target x/y cover [-5, 5]. A spacing larger than 10 avoids
+  # overlap between neighboring cloned environments.
+  env_spacing: 12
+
+  # The source environment uses max_steps=10000 and sets done on step 10001.
+  max_episode_length: 10000
+
+drone_model:
+  # Crazyflie is a four-rotor OmniDrones model whose maximum rotor velocity is
+  # 2315 rad/s, close to the source environment's 2300 command ceiling.
+  name: Crazyflie
+  controller: null
+
+command_max_rotor_velocity: 2300.0
+action_history_divisor: 1300.0
+instant_rotor_response: true
+
+spawn_low: [-5.0, -5.0, 0.0]
+spawn_high: [5.0, 5.0, 3.0]
+spawn_yaw_limit: 0.72
+
+maximum_bounds: [7.0, 7.0, 7.0]
+max_yaw: 1.57
+max_tilt: 1.57
+
+action_transform: null

@@ -1,0 +1,235 @@
+<sdf version="1.9">
+<model name='window'>
+      <pose>0 0 1.0 0 0 0</pose>
+      <!--Link one-->
+      <link name='link1'>
+      <pose>0 1.0 0 0 0 0</pose>
+        <inertial>
+          <inertia>
+            <ixx>0.16666</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.16666</iyy>
+            <iyz>0</iyz>
+            <izz>0.16666</izz>
+          </inertia>
+          <mass>1</mass>
+          <!-- <pose>0 0 0 0 0 0</pose> -->
+        </inertial>
+        <collision name='box_collision'>
+         <surface>
+        <contact>
+          <collide_bitmask>0x00</collide_bitmask>
+        </contact>
+      </surface>
+          <geometry>
+            <box>
+              <size>0.05 0.05 2.0</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='box_visual'>
+          <geometry>
+            <mesh>
+              <uri>model://meshes/racing_gate.dae</uri>
+              <scale>0.5 0.5 1.0</scale>
+            </mesh>
+          </geometry>
+          <!-- <material>
+            <ambient>0.300000012 0.300000012 0.300000012 1</ambient>
+            <diffuse>0.699999988 0.699999988 0.699999988 1</diffuse>
+            <specular>1 1 1 1</specular>
+          </material> -->
+        </visual>
+        <!-- <pose>0 0 0 0 0 0</pose> -->
+        <enable_wind>false</enable_wind>
+      </link>
+
+    <!--LInk 2-->
+      <link name='link2'>
+      <pose>0 0 1.0 1.57 0 0</pose>
+        <inertial>
+          <inertia>
+            <ixx>0.16666</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.16666</iyy>
+            <iyz>0</iyz>
+            <izz>0.16666</izz>
+          </inertia>
+          <mass>1</mass>
+          <!-- <pose>0 0 0 0 0 0</pose> -->
+        </inertial>
+        <collision name='box_collision'>
+         <surface>
+        <contact>
+          <collide_bitmask>0x00</collide_bitmask>
+        </contact>
+      </surface>
+          <geometry>
+            <box>
+              <size>0.05 0.05 2.0</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='box_visual'>
+          <geometry>
+            <mesh>
+              <uri>model://meshes/racing_gate.dae</uri>
+              <scale>0.5 0.5 1.0</scale>
+            </mesh>
+          </geometry>
+          <!-- <material>
+            <ambient>0.300000012 0.300000012 0.300000012 1</ambient>
+            <diffuse>0.699999988 0.699999988 0.699999988 1</diffuse>
+            <specular>1 1 1 1</specular>
+          </material> -->
+        </visual>
+        <!-- <pose>0 0 0 1.57 0 0</pose> -->
+        <enable_wind>false</enable_wind>
+      </link>
+
+    <!--Link 3-->
+      <link name='link3'>
+      <pose>0 -1.0 0 0 0 0</pose>
+        <inertial>
+          <inertia>
+            <ixx>0.16666</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.16666</iyy>
+            <iyz>0</iyz>
+            <izz>0.16666</izz>
+          </inertia>
+          <mass>1</mass>
+          <!-- <pose>0 0 0 0 0 0</pose> -->
+        </inertial>
+        <collision name='box_collision'>
+         <surface>
+        <contact>
+          <collide_bitmask>0x00</collide_bitmask>
+        </contact>
+      </surface>
+          <geometry>
+            <box>
+              <size>0.05 0.05 2.0</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='box_visual'>
+          <geometry>
+            <mesh>
+              <uri>model://meshes/racing_gate.dae</uri>
+              <scale>0.5 0.5 1.0</scale>
+            </mesh>
+          </geometry>
+          <!-- <material>
+            <ambient>0.300000012 0.300000012 0.300000012 1</ambient>
+            <diffuse>0.699999988 0.699999988 0.699999988 1</diffuse>
+            <specular>1 1 1 1</specular>
+          </material> -->
+        </visual>
+        <!-- <pose>0 0.95 0 0 0 0</pose> -->
+        <enable_wind>false</enable_wind>
+      </link>
+
+    <!--Link 4-->
+      <link name='link4'>
+      <pose>0 0 -1.0 1.57 0 0</pose>
+        <inertial>
+          <inertia>
+            <ixx>0.16666</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.16666</iyy>
+            <iyz>0</iyz>
+            <izz>0.16666</izz>
+          </inertia>
+          <mass>1</mass>
+          <!-- <pose>0 0 0 0 0 0</pose> -->
+        </inertial>
+        <collision name='box_collision'>
+         <surface>
+        <contact>
+          <collide_bitmask>0x00</collide_bitmask>
+        </contact>
+      </surface>
+          <geometry>
+            <box>
+              <size>0.05 0.05 2.0</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='box_visual'>
+          <geometry>
+            <mesh>
+              <uri>model://meshes/racing_gate.dae</uri>
+              <scale>0.5 0.5 1.0</scale>
+            </mesh>
+          </geometry>
+          <!-- <material>
+            <ambient>0.300000012 0.300000012 0.300000012 1</ambient>
+            <diffuse>0.699999988 0.699999988 0.699999988 1</diffuse>
+            <specular>1 1 1 1</specular>
+          </material> -->
+        </visual>
+        <!-- <pose>0 0 0 1.57 0 0</pose> -->
+        <enable_wind>false</enable_wind>
+      </link>
+
+    <!--Joint 12-->
+    <joint name='12joint' type='fixed'>
+      <parent>link1</parent>
+      <child>link2</child>
+      <pose>0 0 1.0 0 0 0</pose>
+    </joint>
+    
+    <!--Joint 23-->
+    <joint name='23joint' type='fixed'>
+      <pose>0 -1.0 0 0 0 0</pose>
+      <parent>link2</parent>
+      <child>link3</child>
+    </joint>
+
+    <!--Joint 34-->
+    <joint name='34joint' type='fixed'>
+      <pose>0 0 -1.0 0 0 0</pose>
+      <parent>link3</parent>
+      <child>link4</child>
+    </joint>
+
+    
+
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+
+</sdf>

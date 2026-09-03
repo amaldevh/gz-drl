@@ -1,0 +1,351 @@
+<sdf version="1.9">
+  <world name="coop_transport">
+
+    <!-- Physics: DART -->
+    <physics type="dart">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+      <dart>
+        <solver><solver_type>dantzig</solver_type></solver>
+        <collision_detector>bullet</collision_detector>
+      </dart>
+    </physics>
+
+    <gravity>0 0 -9.82</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type="adiabatic" />
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.8 1</background>
+      <shadows>false</shadows>
+    </scene>
+    <light name="sun" type="directional">
+      <pose>0 0 10 0 -0 0</pose>
+      <cast_shadows>false</cast_shadows>
+      <intensity>1</intensity>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+     <light name="lights1" type="directional">
+      <pose>0 0 3 0 -0 0</pose>
+      <cast_shadows>false</cast_shadows>
+      <intensity>1</intensity>
+      <direction>0 0 -1</direction>
+    </light>
+    <light name="lights2" type="directional">
+      <pose>1 0 3 0 -0 0</pose>
+      <cast_shadows>false</cast_shadows>
+      <intensity>1</intensity>
+      <direction>0 0 -1</direction>
+    </light>
+
+    <light name="lights3" type="directional">
+      <pose>-1 0 3 0 -0 0</pose>
+      <cast_shadows>false</cast_shadows>
+      <intensity>1</intensity>
+      <direction>0 0 -1</direction>
+    </light>
+
+    <light name="lights4" type="directional">
+      <pose>0 1 3 0 -0 0</pose>
+      <cast_shadows>false</cast_shadows>
+      <intensity>1</intensity>
+      <direction>0 0 -1</direction>
+    </light>
+
+    <light name="lights5" type="directional">
+      <pose>0 1 3 0 -0 0</pose>
+      <cast_shadows>false</cast_shadows>
+      <intensity>1</intensity>
+      <direction>0 0 -1</direction>
+    </light>
+
+    <!-- Ground -->
+    <model name="ground">
+      <static>true</static>
+      <link name="link">
+        <collision name="col">
+          <geometry><plane><normal>0 0 1</normal><size>200 200</size></plane></geometry>
+        </collision>
+        <visual name="vis">
+          <geometry><plane><normal>0 0 1</normal><size>200 200</size></plane></geometry>
+         
+<material>
+  <ambient>0.2 0.2 0.2 1</ambient>
+  <diffuse>0.6 0.6 0.6 1</diffuse>
+  <specular>1.0 1.0 1.0 1</specular>
+  <shininess>100</shininess>
+</material>
+
+
+
+        </visual>
+      </link>
+    </model>
+
+    <!-- Quadrotors (assumes model://quadrotor.sdf has link 'base_link') -->
+    <model name="coop_agent">
+    <include>
+      <uri>model://quadrotor.sdf</uri>
+      <name>quadrotor1</name>
+      <pose> 0.20  0.20  1.9  0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://quadrotor.sdf</uri>
+      <name>quadrotor2</name>
+      <pose>-0.20  0.20  1.9  0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://quadrotor.sdf</uri>
+      <name>quadrotor3</name>
+      <pose>-0.20 -0.20  1.9  0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://quadrotor.sdf</uri>
+      <name>quadrotor4</name>
+      <pose> 0.20 -0.20  1.9  0 0 0</pose>
+    </include>
+
+    <!-- Payload box at origin (COM at z=1.00). Size 0.5x0.5x0.25 (half-height = 0.125) -->
+   <model name="payload_box">
+  <pose>0 0 0.7 0 0 0</pose>
+
+  <!-- Main box -->
+  <link name="payload_box_link">
+    <inertial>
+      <mass>0.500</mass>
+      <inertia>
+        <ixx>0.0130</ixx>
+        <iyy>0.0130</iyy>
+        <izz>0.02</izz>
+      </inertia>
+    </inertial>
+    <collision name="payload_col">
+      <geometry><box><size>0.5 0.5 0.25</size></box></geometry>
+    </collision>
+    <visual name="payload_vis">
+      <geometry><box><size>0.5 0.5 0.25</size></box></geometry>
+    </visual>
+  </link>
+
+  <!-- Corner links (tiny spheres, nearly massless) -->
+  <link name="corner1">
+    <pose> 0.25  0.25 0.125  0 0 0</pose>
+    <inertial>
+      <mass>0.001</mass>
+      <inertia>
+        <ixx>1e-6</ixx><iyy>1e-6</iyy><izz>1e-6</izz>
+      </inertia>
+    </inertial>
+    <visual name="vis_corner1">
+      <geometry><sphere><radius>0.02</radius></sphere></geometry>
+      <material><ambient>1 0 0 1</ambient></material>
+    </visual>
+  </link>
+
+  <link name="corner2">
+    <pose>-0.25  0.25 0.125  0 0 0</pose>
+    <inertial>
+      <mass>0.001</mass>
+      <inertia>
+        <ixx>1e-6</ixx><iyy>1e-6</iyy><izz>1e-6</izz>
+      </inertia>
+    </inertial>
+    <visual name="vis_corner2">
+      <geometry><sphere><radius>0.02</radius></sphere></geometry>
+      <material><ambient>0 1 0 1</ambient></material>
+    </visual>
+  </link>
+
+  <link name="corner3">
+    <pose>-0.25 -0.25 0.125  0 0 0</pose>
+    <inertial>
+      <mass>0.001</mass>
+      <inertia>
+        <ixx>1e-6</ixx><iyy>1e-6</iyy><izz>1e-6</izz>
+      </inertia>
+    </inertial>
+    <visual name="vis_corner3">
+      <geometry><sphere><radius>0.02</radius></sphere></geometry>
+      <material><ambient>0 0 1 1</ambient></material>
+    </visual>
+  </link>
+
+  <link name="corner4">
+    <pose> 0.25 -0.25 0.125  0 0 0</pose>
+    <inertial>
+      <mass>0.001</mass>
+      <inertia>
+        <ixx>1e-6</ixx><iyy>1e-6</iyy><izz>1e-6</izz>
+      </inertia>
+    </inertial>
+    <visual name="vis_corner4">
+      <geometry><sphere><radius>0.02</radius></sphere></geometry>
+      <material><ambient>1 1 0 1</ambient></material>
+    </visual>
+  </link>
+
+
+</model>
+
+    <!-- Tether template (replicated 4x)
+         Each tether is a 0.60 m cylinder (r=0.002), link origin at its center.
+         We'll place the link midpoint midway between UAV and its payload attach.
+    -->
+    <model name="tether1">
+      <!-- Midpoint between (0.20,0.20,1.60) and (0.20,0.20,1.125) is at z=1.3625.
+           But tether length is 0.60, so ends at ±0.30 from center; with those endpoints we want
+           top end at z=1.60 and bottom at z=1.00+0.125=1.125. Midpoint = (1.60+1.125)/2 = 1.3625 -->
+      <pose>0.20 0.20 1.3625  0 0 0</pose>
+      <link name="link">
+        <inertial>
+          <mass>0.006</mass>
+          <inertia>
+            <!-- Slender rod L=0.60, r=0.002 -->
+            <ixx>7.2e-4</ixx>   <!-- ~ (1/12) m L^2 -->
+            <iyy>7.2e-4</iyy>
+            <izz>1.20e-8</izz>   <!-- ~ (1/2) m r^2 -->
+          </inertia>
+        </inertial>
+        <collision name="col">
+          <!-- Draw the cylinder centered at link origin, axis along +Z -->
+          <geometry><cylinder><radius>0.002</radius><length>1.2</length></cylinder></geometry>
+          <surface><soft_contact><dart>
+            <bone_attachment>100</bone_attachment>
+            <stiffness>100</stiffness>
+            <damping>10</damping>
+            <flesh_mass_fraction>0.05</flesh_mass_fraction>
+            </dart></soft_contact></surface>
+        </collision>
+        <visual name="vis">
+          <geometry><cylinder><radius>0.002</radius><length>1.2</length></cylinder></geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="tether2">
+      <pose>-0.20 0.20 1.3625  0 0 0</pose>
+      <link name="link">
+        <inertial>
+          <mass>0.006</mass>
+          <inertia><ixx>7.2e-4</ixx><iyy>7.2e-4</iyy><izz>1.20e-8</izz></inertia>
+        </inertial>
+        <collision name="col">
+          <geometry><cylinder><radius>0.002</radius><length>1.2</length></cylinder></geometry>
+          <surface><soft_contact><dart>
+            <bone_attachment>100</bone_attachment>
+            <stiffness>100</stiffness>
+            <damping>10</damping>
+            <flesh_mass_fraction>0.05</flesh_mass_fraction>
+            </dart></soft_contact></surface>
+        </collision>
+        <visual name="vis">
+          <geometry><cylinder><radius>0.002</radius><length>1.2</length></cylinder></geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="tether3">
+      <pose>-0.20 -0.20 1.3625  0 0 0</pose>
+      <link name="link">
+        <inertial>
+          <mass>0.006</mass>
+          <inertia><ixx>7.2e-4</ixx><iyy>7.2e-4</iyy><izz>1.20e-8</izz></inertia>
+        </inertial>
+        <collision name="col">
+          <geometry><cylinder><radius>0.002</radius><length>1.2</length></cylinder></geometry>
+          <surface><soft_contact><dart>
+            <bone_attachment>100</bone_attachment>
+            <stiffness>100</stiffness>
+            <damping>10</damping>
+            <flesh_mass_fraction>0.05</flesh_mass_fraction>
+            </dart></soft_contact></surface>
+        </collision>
+        <visual name="vis">
+          <geometry><cylinder><radius>0.002</radius><length>1.2</length></cylinder></geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="tether4">
+      <pose>0.20 -0.20 1.3625  0 0 0</pose>
+      <link name="link">
+        <inertial>
+          <mass>0.006</mass>
+          <inertia><ixx>7.2e-4</ixx><iyy>7.2e-4</iyy><izz>1.20e-8</izz></inertia>
+        </inertial>
+        <collision name="col">
+          <geometry><cylinder><radius>0.002</radius><length>1.2</length></cylinder></geometry>
+          <surface><soft_contact><dart>
+            <bone_attachment>100</bone_attachment>
+            <stiffness>100</stiffness>
+            <damping>10</damping>
+            <flesh_mass_fraction>0.05</flesh_mass_fraction>
+            </dart></soft_contact></surface>
+        </collision>
+        <visual name="vis">
+          <geometry><cylinder><radius>0.002</radius><length>1.2</length></cylinder></geometry>
+        </visual>
+      </link>
+    </model>
+
+    <!-- === CROSS-MODEL JOINTS ===
+         Use fully-scoped link names: model::link
+         Place the joint frame at the *end* of each tether link (±0.30 along its local Z).
+         Top anchors: UAV base_link at z=1.60
+         Bottom anchors: payload top face corners at z=1.125 (1.00 + 0.125)
+    -->
+
+    <!-- Tether 1: +x,+y corner -->
+    <joint name="t1_top" type="ball">
+      <parent>quadrotor1::quadrotor/base_link</parent>
+      <child>tether1::link</child>
+      <!-- joint frame at tether top end (child +0.30 z) -->
+      <pose relative_to="tether1::link">0 0 0.60  0 0 0</pose>
+    </joint>
+    <joint name="t1_bottom" type="ball">
+      <parent>tether1::link</parent>
+      <child>payload_box::corner1</child>
+      <!-- joint frame at tether bottom end (child -0.30 z) which is also payload corner (+0.20,+0.20,+0.125) in world initially -->
+      <pose relative_to="tether1::link">0 0 -0.60  0 0 0</pose>
+    </joint>
+
+    <!-- Tether 2: -x,+y corner -->
+    <joint name="t2_top" type="ball">
+      <parent>quadrotor2::quadrotor/base_link</parent>
+      <child>tether2::link</child>
+      <pose relative_to="tether2::link">0 0 0.60  0 0 0</pose>
+    </joint>
+    <joint name="t2_bottom" type="ball">
+      <parent>tether2::link</parent>
+      <child>payload_box::corner2</child>
+      <pose relative_to="tether2::link">0 0 -0.60  0 0 0</pose>
+    </joint>
+
+    <!-- Tether 3: -x,-y corner -->
+    <joint name="t3_top" type="ball">
+      <parent>quadrotor3::quadrotor/base_link</parent>
+      <child>tether3::link</child>
+      <pose relative_to="tether3::link">0 0 0.60  0 0 0</pose>
+    </joint>
+    <joint name="t3_bottom" type="ball">
+      <parent>tether3::link</parent>
+      <child>payload_box::corner3</child>
+      <pose relative_to="tether3::link">0 0 -0.60  0 0 0</pose>
+    </joint>
+
+    <!-- Tether 4: +x,-y corner -->
+    <joint name="t4_top" type="ball">
+      <parent>quadrotor4::quadrotor/base_link</parent>
+      <child>tether4::link</child>
+      <pose relative_to="tether4::link">0 0 0.60  0 0 0</pose>
+    </joint>
+    <joint name="t4_bottom" type="ball">
+      <parent>tether4::link</parent>
+      <child>payload_box::corner4</child>
+      <pose relative_to="tether4::link">0 0 -0.60  0 0 0</pose>
+    </joint>
+    </model>
+
+  </world>
+</sdf>

@@ -1,0 +1,419 @@
+<sdf version='1.12'>
+  <model name='firefly'>
+    <link name='firefly/base_link'>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>1.5</mass>
+        <inertia>
+          <ixx>0.034756299999999997</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0458929</iyy>
+          <iyz>0</iyz>
+          <izz>0.066</izz>
+        </inertia>
+      </inertial>
+      <collision name='firefly/base_link_inertia_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.10000000000000001 0.10000000000000001 0.16</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='firefly/base_link_inertia_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/firefly.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='firefly/rotor_0_joint' type='revolute'>
+      <pose relative_to='firefly/base_link'>0.18619546181356 0.1075 0.036999999999999998 0 0 0</pose>
+      <parent>firefly/base_link</parent>
+      <child>firefly/rotor_0</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='firefly/rotor_0'>
+      <pose relative_to='firefly/rotor_0_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0050000000000000001</mass>
+        <inertia>
+          <ixx>9.7499961000000005e-07</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>4.1704149985000012e-05</iyy>
+          <iyz>0</iyz>
+          <izz>4.2604149625000013e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='firefly/rotor_0_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.10000000000000001</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='firefly/rotor_0_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.10000000000000001 0.10000000000000001 0.10000000000000001</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+  <ambient>0.2 0.0 0.0 1</ambient>
+  <diffuse>0.8 0.0 0.0 1</diffuse>
+  <specular>0.1 0.1 0.1 1</specular>
+</material>
+
+      </visual>
+    </link>
+    <joint name='firefly/rotor_1_joint' type='revolute'>
+      <pose relative_to='firefly/base_link'>0 0.215 0.036999999999999998 0 0 0</pose>
+      <parent>firefly/base_link</parent>
+      <child>firefly/rotor_1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='firefly/rotor_1'>
+      <pose relative_to='firefly/rotor_1_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0050000000000000001</mass>
+        <inertia>
+          <ixx>9.7499961000000005e-07</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>4.1704149985000012e-05</iyy>
+          <iyz>0</iyz>
+          <izz>4.2604149625000013e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='firefly/rotor_1_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.10000000000000001</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='firefly/rotor_1_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.10000000000000001 0.10000000000000001 0.10000000000000001</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+  <ambient>0.0 0.2 0.2 1</ambient>
+  <diffuse>0.0 0.0 0.8 1</diffuse>
+  <specular>0.1 0.1 0.1 1</specular>
+</material>
+
+      </visual>
+    </link>
+    <joint name='firefly/rotor_2_joint' type='revolute'>
+      <pose relative_to='firefly/base_link'>-0.18619546181356 0.1075 0.036999999999999998 0 0 0</pose>
+      <parent>firefly/base_link</parent>
+      <child>firefly/rotor_2</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='firefly/rotor_2'>
+      <pose relative_to='firefly/rotor_2_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0050000000000000001</mass>
+        <inertia>
+          <ixx>9.7499961000000005e-07</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>4.1704149985000012e-05</iyy>
+          <iyz>0</iyz>
+          <izz>4.2604149625000013e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='firefly/rotor_2_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.10000000000000001</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='firefly/rotor_2_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.10000000000000001 0.10000000000000001 0.10000000000000001</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+  <ambient>0.0 0.2 0.2 1</ambient>
+  <diffuse>0.0 0.0 0.8 1</diffuse>
+  <specular>0.1 0.1 0.1 1</specular>
+</material>
+
+      </visual>
+    </link>
+    <joint name='firefly/rotor_3_joint' type='revolute'>
+      <pose relative_to='firefly/base_link'>-0.18619546181356 -0.1075 0.036999999999999998 0 0 0</pose>
+      <parent>firefly/base_link</parent>
+      <child>firefly/rotor_3</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='firefly/rotor_3'>
+      <pose relative_to='firefly/rotor_3_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0050000000000000001</mass>
+        <inertia>
+          <ixx>9.7499961000000005e-07</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>4.1704149985000012e-05</iyy>
+          <iyz>0</iyz>
+          <izz>4.2604149625000013e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='firefly/rotor_3_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.10000000000000001</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='firefly/rotor_3_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.10000000000000001 0.10000000000000001 0.10000000000000001</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+  <ambient>0.0 0.2 0.2 1</ambient>
+  <diffuse>0.0 0.0 0.8 1</diffuse>
+  <specular>0.1 0.1 0.1 1</specular>
+</material>
+
+      </visual>
+    </link>
+    <joint name='firefly/rotor_4_joint' type='revolute'>
+      <pose relative_to='firefly/base_link'>0 -0.215 0.036999999999999998 0 0 0</pose>
+      <parent>firefly/base_link</parent>
+      <child>firefly/rotor_4</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='firefly/rotor_4'>
+      <pose relative_to='firefly/rotor_4_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0050000000000000001</mass>
+        <inertia>
+          <ixx>9.7499961000000005e-07</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>4.1704149985000012e-05</iyy>
+          <iyz>0</iyz>
+          <izz>4.2604149625000013e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='firefly/rotor_4_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.10000000000000001</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='firefly/rotor_4_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.10000000000000001 0.10000000000000001 0.10000000000000001</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+  <ambient>0.0 0.2 0.2 1</ambient>
+  <diffuse>0.0 0.0 0.8 1</diffuse>
+  <specular>0.1 0.1 0.1 1</specular>
+</material>
+
+      </visual>
+    </link>
+    <joint name='firefly/rotor_5_joint' type='revolute'>
+      <pose relative_to='firefly/base_link'>0.18619546181356 -0.1075 0.036999999999999998 0 0 0</pose>
+      <parent>firefly/base_link</parent>
+      <child>firefly/rotor_5</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='firefly/rotor_5'>
+      <pose relative_to='firefly/rotor_5_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0050000000000000001</mass>
+        <inertia>
+          <ixx>9.7499961000000005e-07</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>4.1704149985000012e-05</iyy>
+          <iyz>0</iyz>
+          <izz>4.2604149625000013e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='firefly/rotor_5_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.10000000000000001</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='firefly/rotor_5_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.10000000000000001 0.10000000000000001 0.10000000000000001</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+  <ambient>0.2 0.0 0.0 1</ambient>
+  <diffuse>0.8 0.0 0.0 1</diffuse>
+  <specular>0.1 0.1 0.1 1</specular>
+</material>
+
+      </visual>
+    </link>
+    <frame name='firefly/base_joint' attached_to='firefly/base_link'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='firefly/base_link_inertia' attached_to='firefly/base_joint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+  </model>
+</sdf>

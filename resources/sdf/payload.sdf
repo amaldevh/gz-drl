@@ -1,0 +1,80 @@
+<sdf version='1.11'>
+  <model name='payload'>
+  <pose>0 0 0.25 3.14 0 0</pose>
+    <enable_wind>1</enable_wind>
+    <link name='payload_link'>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>6e-3</mass>
+        <inertia>
+          <ixx>1.27e-4</ixx>
+          <iyy>1.27e-4</iyy>
+          <izz>1.22e-8</izz>
+        </inertia>
+      </inertial>
+      <collision name='payload_link_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>2e-3</radius>
+            <length>0.500</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_without_contact>1</collide_without_contact>
+            <collide_bitmask>0x00</collide_bitmask>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='payload_link_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>2e-3</radius>
+            <length>0.500</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name="joint1" type="ball">
+      <parent>payload_link</parent>
+      <child>payload</child>
+      <pose>0 0 0.25 0 0 0</pose>
+    </joint>
+
+    <link name='payload'>
+    <pose>0 0 0.25 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.500</mass>
+        <inertia>
+          <ixx>9.8e-4</ixx>
+          <iyy>9.8e-4</iyy>
+          <izz>9.8e-4</izz>
+        </inertia>
+      </inertial>
+      <collision name='payload_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>7e-2</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_without_contact>1</collide_without_contact>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='payload_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+         <sphere>
+            <radius>7e-2</radius>
+          </sphere>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>

@@ -1,0 +1,41 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2025-2026 Amal Dev Haridevan
+
+name: GazeboMultiAgentFormationLL
+
+defaults:
+  - /base/env_base@_here_
+  - /base/sim_base@_here_
+
+env:
+  # The paper benchmark holds this fixed while scaling the drones per world.
+  num_envs: 32
+
+  # The source target can reach +/-10 m in x/y, with another +/-2 m spawn
+  # offset. Large spacing prevents interactions between cloned worlds.
+  env_spacing: 30
+
+  max_episode_length: 20000
+
+num_agents: 2
+
+drone_model:
+  # Crazyflie is OmniDrones' four-rotor model and supports the source's
+  # 0--2300 rad/s rotor target range (native limit: 2315 rad/s).
+  name: Crazyflie
+  controller: null
+
+max_rotor_velocity: 2300.0
+physics_steps_per_control: 1
+instant_rotor_response: true
+
+safe_distance: 0.5
+collision_distance: 0.23
+max_tilt: 1.57
+
+# The supplied C++ task randomizes parameters at reset every ten episodes.
+# Reset and randomization are outside the measured throughput window. It is
+# disabled here to avoid introducing a simulator-specific reset workload.
+domain_randomization: false
+
+action_transform: null

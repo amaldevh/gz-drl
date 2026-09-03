@@ -1,0 +1,132 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <model name="swinging_hoop">
+    <!-- ===================== -->
+    <link name="arm_link">
+      <pose>0 0 2.0 0 0 0</pose> <!-- rpy: (+pi/2,0,0). Center at y=-L/2 so top end is at the hinge -->
+      <inertial>
+        <mass>1.0</mass>
+        <!-- Cylinder inertia with axis along link Y -->
+        <inertia>
+          <ixx>0.1876</ixx>
+          <iyy>0.0002</iyy>
+          <izz>0.1876</izz>
+        </inertia>
+      </inertial>
+      <collision name="arm_collision">
+        <surface>
+            <contact>
+            <collide_bitmask>0x00</collide_bitmask>
+              <collide_without_contact>
+                true
+              </collide_without_contact>
+              <bullet>
+              <soft_cfm>1e-5</soft_cfm>     <!-- numerical compliance -->
+                <soft_erp>0.2</soft_erp>      <!-- error reduction -->
+                <kp>2e6</kp>                  <!-- WAY lower than 1e12 -->
+                <kd>50</kd>                   <!-- damping with kp -->
+                <split_impulse>true</split_impulse>
+                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                </bullet>
+            </contact>
+ 
+      </surface>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>1.5</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="arm_visual">
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>1.5</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.15 0.25 0.5 1</ambient>
+          <diffuse>0.2 0.4 0.8 1</diffuse>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="hinge_to_arm" type="revolute">
+      <parent>world</parent>
+      <child>arm_link</child>
+      <pose relative_to="arm_link">0 0 0.75 0 0 0</pose> <!-- joint at hinge center -->
+      <axis>
+        <xyz expressed_in="arm_link">1 0 0</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+      </axis>
+    </joint>
+     <plugin
+        filename="joint_position_controller_plugin"
+        name="gz::sim::systems::JointPositionController">
+        <joint_name>hinge_to_arm</joint_name>
+        <joint_index>0</joint_index>
+        <p_gain>68.6</p_gain>
+        <i_gain>30.49</i_gain>
+        <d_gain>16.0</d_gain>
+        <i_max>25</i_max>
+        <i_min>-25</i_min>
+        <cmd_max>60</cmd_max>
+        <cmd_min>-60</cmd_min>
+      </plugin>
+
+       <link name="hoop_link">
+      <!-- The fixed joint below positions this link; initial pose doesn't matter, but zero keeps things tidy -->
+      <pose>0 0 0.50 0 0 0</pose>
+      <inertial>
+        <mass>2.0</mass>
+        <density>7823</density>
+        <!-- Approx torus inertia (axis along local Y). Good enough unless you're doing precision dynamics. -->
+        <inertia>
+          <ixx>1.0125</ixx>
+          <iyy>2.015</iyy>
+          <izz>1.0125</izz>
+        </inertia>
+      </inertial>
+
+      <collision name="hoop_collision">
+      <surface>
+  <contact>
+  <collide_bitmask>0x00</collide_bitmask>
+    <collide_without_contact>
+      true
+    </collide_without_contact>
+  </contact>
+</surface>
+        <geometry>
+          <mesh>
+            <!-- TODO: replace with your actual torus mesh path -->
+            <uri>model://meshes/racing_hoop2.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <!-- Offset the mesh so the attachment point is the hoop's top (0,1,0) -->
+      </collision>
+
+      <visual name="hoop_visual">
+        <geometry>
+          <mesh>
+            <uri>model://meshes/racing_hoop2.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <!-- Fixed joint: attach the hoop at the arm's bottom end -->
+    <joint name="arm_to_hoop" type="fixed">
+      <parent>arm_link</parent>
+      <child>hoop_link</child>
+      <!-- Place joint at arm bottom: parent's origin is at y=-0.75; bottom end is another -0.75 -->
+      <pose>0 0.85 0 0 0 0</pose>
+    </joint>
+    </model>
+</sdf>

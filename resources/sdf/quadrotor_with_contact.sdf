@@ -1,0 +1,651 @@
+<sdf version='1.11'>
+  <model name='quadrotor'>
+   
+    
+    <enable_wind>1</enable_wind>
+    <link name='quadrotor/base_link'>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>1.52</mass>
+        <inertia>
+          <ixx>14387108.65e-9</ixx>
+          <iyy>16559882.52e-9</iyy>
+          <izz>28784890.45e-9</izz>
+        </inertia>
+      </inertial>
+      <collision name='quadrotor/base_link_inertia_collision_2'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.2 0.2 0.05</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_without_contact>1</collide_without_contact>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='quadrotor/base_link_inertia_visual_2'>
+        <pose>0 0 0 3.1415920000000002 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/QDrone2_Combined.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <sensor name='grayscale' type='camera'>
+        <camera name='graycale'>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>L8</format>
+          </image>
+          <clip>
+            <near>0.10000000000000001</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>1e-3</stddev>
+          </noise>
+       
+          <lens>
+            <type>stereographic</type>
+            <scale_to_hfov>1</scale_to_hfov>
+
+              <intrinsics>
+       
+              <fx>381.47</fx> 
+              <fy>762.156</fy> 
+              <cx>297.96</cx> 
+              <cy>215.755</cy>
+             
+            </intrinsics>
+            <projection>
+              <p_fx>381.47</p_fx> 
+              <p_fy>762.156</p_fy>
+              <p_cx>297.96</p_cx> 
+              <p_cy>215.755</p_cy>
+
+
+            </projection>
+          </lens>
+        </camera>
+        <always_on>false</always_on>
+        <update_rate>30</update_rate>
+        <visualize>false</visualize>
+        <pose>0.125 0 -0.0375 3.14 1.57 3.14</pose>
+      </sensor>
+      <!--rgbd-->
+       <sensor name='rgb' type='camera'>
+        <camera name='rgb'>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.10000000000000001</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>1e-3</stddev>
+          </noise>
+    
+          <lens>
+            <type>stereographic</type>
+            <scale_to_hfov>1</scale_to_hfov>
+
+              <intrinsics>
+        
+              <fx>381.47</fx> 
+              <fy>762.156</fy> >
+              <cx>297.96</cx> 
+              <cy>215.755</cy>
+          
+            </intrinsics>
+            <projection>
+              <p_fx>381.47</p_fx> 
+              <p_fy>762.156</p_fy>
+              <p_cx>297.96</p_cx> 
+              <p_cy>215.755</p_cy>
+              
+            </projection>
+          </lens>
+        </camera>
+        <always_on>false</always_on>
+        <update_rate>30</update_rate>
+        <visualize>false</visualize>
+        <pose>0.125 0 0 0 0 0</pose>
+      </sensor>
+       <!-- <sensor name='depth' type='depth_camera'>
+        <camera name='depth_cam'>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R_FLOAT32</format> -->
+            <!-- <format>B8G8R8</format> -->
+          <!-- </image>
+          <clip>
+            <near>0.10000000000000001</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>1e-3</stddev>
+          </noise> -->
+          <!-- distortion-->
+          <!--lens-->
+          
+        <!-- </camera>
+        <always_on>false</always_on>
+        <update_rate>30</update_rate>
+        <visualize>false</visualize>
+        <pose>0.125 0 0 0 0 0</pose>
+      </sensor> -->
+
+      <!--IMU1 , we will use different noise params-->
+      <!-- <sensor name='imu1' type='imu'>
+      <imu>
+        <orientation_reference_frame>
+          <localization>NED</localization>
+        </orientation_reference_frame>
+  
+        <angular_velocity>
+          <x> 
+            <noise type="gaussian"> 
+              <mean>1e-2</mean>
+              <stddev>2e-1</stddev>
+              <bias_mean>1e-2</bias_mean>
+              <bias_stddev>2e-1</bias_stddev>
+              <dynamic_bias_correlation_time>3600</dynamic_bias_correlation_time>
+              <dynamic_bias_stddev>1e-1</dynamic_bias_stddev>
+            </noise>
+          </x>
+          <y> 
+            <noise type="gaussian"> 
+              <mean>1e-2</mean>
+              <stddev>2e-1</stddev>
+              <bias_mean>1e-2</bias_mean>
+              <bias_stddev>2e-1</bias_stddev>
+              <dynamic_bias_correlation_time>3600</dynamic_bias_correlation_time>
+              <dynamic_bias_stddev>1e-1</dynamic_bias_stddev>
+            </noise>
+          </y>
+          <z> 
+            <noise type="gaussian"> 
+             <mean>1e-2</mean>
+              <stddev>2e-1</stddev>
+              <bias_mean>1e-2</bias_mean>
+              <bias_stddev>2e-1</bias_stddev>
+              <dynamic_bias_correlation_time>3600</dynamic_bias_correlation_time>
+              <dynamic_bias_stddev>1e-1</dynamic_bias_stddev>
+            </noise>
+          </z>
+
+        </angular_velocity>
+        <linear_acceleration>
+          <x> 
+            <noise type="gaussian"> 
+              <mean>1e-2</mean>
+              <stddev>2e-1</stddev>
+              <bias_mean>1e-2</bias_mean>
+              <bias_stddev>2e-1</bias_stddev>
+              <dynamic_bias_correlation_time>3600</dynamic_bias_correlation_time>
+              <dynamic_bias_stddev>1e-1</dynamic_bias_stddev>
+            </noise>
+          </x>
+          <y> 
+            <noise type="gaussian"> 
+              <mean>1e-2</mean>
+              <stddev>2e-1</stddev>
+              <bias_mean>1e-2</bias_mean>
+              <bias_stddev>2e-1</bias_stddev>
+              <dynamic_bias_correlation_time>3600</dynamic_bias_correlation_time>
+              <dynamic_bias_stddev>1e-1</dynamic_bias_stddev>
+            </noise>
+          </y>
+          <z> 
+            <noise type="gaussian"> 
+              <mean>1e-2</mean>
+              <stddev>2e-1</stddev>
+              <bias_mean>1e-2</bias_mean>
+              <bias_stddev>2e-1</bias_stddev>
+              <dynamic_bias_correlation_time>3600</dynamic_bias_correlation_time>
+              <dynamic_bias_stddev>1e-1</dynamic_bias_stddev>
+            </noise>
+          </z>
+        </linear_acceleration>
+        </imu>
+        <always_on>true</always_on>
+        <update_rate>200</update_rate>
+        <visualize>false</visualize>
+        <enable_metrics>true</enable_metrics>
+        <pose>0 0 0 0 0 0</pose>
+      </sensor>
+
+
+      <sensor name='imu2' type='imu'>
+      <imu>
+        <orientation_reference_frame>
+          <localization>NED</localization>
+        </orientation_reference_frame>
+
+        <angular_velocity>
+          <x> 
+            <noise type="gaussian"> 
+              <mean>0</mean>
+              <stddev>1e-1</stddev>
+              <bias_mean>0</bias_mean>
+              <bias_stddev>1e-1</bias_stddev>
+              <dynamic_bias_correlation_time>3600</dynamic_bias_correlation_time>
+              <dynamic_bias_stddev>1e-1</dynamic_bias_stddev>
+            </noise>
+          </x>
+          <y> 
+            <noise type="gaussian"> 
+              <mean>0</mean>
+              <stddev>1e-1</stddev>
+              <bias_mean>0</bias_mean>
+              <bias_stddev>1e-1</bias_stddev>
+              <dynamic_bias_correlation_time>3600</dynamic_bias_correlation_time>
+              <dynamic_bias_stddev>1e-1</dynamic_bias_stddev>
+            </noise>
+          </y>
+          <z> 
+            <noise type="gaussian"> 
+              <mean>0</mean>
+              <stddev>1e-1</stddev>
+              <bias_mean>0</bias_mean>
+              <bias_stddev>1e-1</bias_stddev>
+              <dynamic_bias_correlation_time>3600</dynamic_bias_correlation_time>
+              <dynamic_bias_stddev>1e-1</dynamic_bias_stddev>
+            </noise>
+          </z>
+        </angular_velocity>
+        <linear_acceleration>
+          <x> 
+            <noise type="gaussian"> 
+              <mean>0</mean>
+              <stddev>1e-1</stddev>
+              <bias_mean>0</bias_mean>
+              <bias_stddev>1e-1</bias_stddev>
+              <dynamic_bias_correlation_time>3600</dynamic_bias_correlation_time>
+              <dynamic_bias_stddev>1e-1</dynamic_bias_stddev>
+            </noise>
+          </x>
+          <y> 
+            <noise type="gaussian"> 
+              <mean>0</mean>
+              <stddev>1e-1</stddev>
+              <bias_mean>0</bias_mean>
+              <bias_stddev>1e-1</bias_stddev>
+              <dynamic_bias_correlation_time>3600</dynamic_bias_correlation_time>
+              <dynamic_bias_stddev>1e-1</dynamic_bias_stddev>
+            </noise>
+          </y>
+          <z> 
+            <noise type="gaussian"> 
+              <mean>0</mean>
+              <stddev>1e-1</stddev>
+              <bias_mean>0</bias_mean>
+              <bias_stddev>1e-1</bias_stddev>
+              <dynamic_bias_correlation_time>3600</dynamic_bias_correlation_time>
+              <dynamic_bias_stddev>1e-1</dynamic_bias_stddev>
+            </noise>
+          </z>
+            
+        </linear_acceleration>
+        </imu>
+        <always_on>true</always_on>
+        <update_rate>200</update_rate>
+        <visualize>false</visualize>
+        <enable_metrics>true</enable_metrics>
+        <pose>0 0 0 0 0 0</pose>
+      </sensor> -->
+      <!-- range sensor using lidar-->
+      <!-- we will only use a single vertical ray-->
+    <!-- <sensor name='range_sensor' type='gpu_lidar'>
+        <lidar>
+          <scan>
+            <horizontal>
+              <samples>1</samples> 
+              <resolution>1</resolution>
+              <min_angle>0</min_angle>
+              <max_angle>0</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>1</samples> 
+              <resolution>1</resolution>
+              <min_angle>4.71</min_angle> 
+              <max_angle>4.71</max_angle>
+            </vertical>
+          </scan>
+          <range>
+            <min>0.01</min>
+            <max>10.0</max>
+            <resolution>0.1</resolution>
+             
+          </range>
+          <noise>
+              <type>gaussian</type>
+              <mean>0</mean>
+              <stddev>1e-1</stddev>
+          </noise>
+        </lidar>
+        <always_on>false</always_on>
+        <update_rate>50</update_rate>
+        
+        <visualize>false</visualize>
+        <enable_metrics>true</enable_metrics>
+        <pose>0 0 -0.15 0 0 0</pose>
+    </sensor> -->
+    </link>
+
+    
+
+    <joint name='quadrotor/rotor_0_joint' type='revolute'>
+      <pose relative_to='quadrotor/base_link'>-0.1016 -0.127 0.023 0 0 0</pose>
+      <parent>quadrotor/base_link</parent>
+      <child>quadrotor/rotor_0</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='quadrotor/rotor_0'>
+      <pose relative_to='quadrotor/rotor_0_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0050000000000000001</mass>
+        <inertia>
+          <ixx>1.9500000000000001e-07</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.3340833333333338e-05</iyy>
+          <iyz>0</iyz>
+          <izz>3.3520833333333339e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='quadrotor/rotor_0_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.10000000000000001</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+          <collide_bitmask>0xff</collide_bitmask>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='quadrotor/rotor_0_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0 0 1 1</ambient>
+          <diffuse>0 0 1 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0 0 0 0</emissive>
+      </material>
+      </visual>
+    </link>
+    <joint name='quadrotor/rotor_1_joint' type='revolute'>
+      <pose relative_to='quadrotor/base_link'>0.1016 -0.127 0.023 0 0 0</pose>
+      <parent>quadrotor/base_link</parent>
+      <child>quadrotor/rotor_1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='quadrotor/rotor_1'>
+      <pose relative_to='quadrotor/rotor_1_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0050000000000000001</mass>
+        <inertia>
+          <ixx>1.9500000000000001e-07</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.3340833333333338e-05</iyy>
+          <iyz>0</iyz>
+          <izz>3.3520833333333339e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='quadrotor/rotor_1_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.10000000000000001</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+          <collide_bitmask>0xff</collide_bitmask>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='quadrotor/rotor_1_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0 0 1 1</ambient>
+          <diffuse>0 0 1 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0 0 0 0</emissive>
+      </material>
+      </visual>
+    </link>
+    <joint name='quadrotor/rotor_2_joint' type='revolute'>
+      <pose relative_to='quadrotor/base_link'>-0.1016 0.127 0.023 0 0 0</pose>
+      <parent>quadrotor/base_link</parent>
+      <child>quadrotor/rotor_2</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='quadrotor/rotor_2'>
+      <pose relative_to='quadrotor/rotor_2_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0050000000000000001</mass>
+        <inertia>
+          <ixx>1.9500000000000001e-07</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.3340833333333338e-05</iyy>
+          <iyz>0</iyz>
+          <izz>3.3520833333333339e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='quadrotor/rotor_2_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.10000000000000001</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+          <collide_bitmask>0xff</collide_bitmask>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='quadrotor/rotor_2_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0 0 1 1</ambient>
+          <diffuse>0 0 1 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0 0 0 0</emissive>
+      </material>
+      </visual>
+    </link>
+    <joint name='quadrotor/rotor_3_joint' type='revolute'>
+      <pose relative_to='quadrotor/base_link'>0.1016 0.127 0.023 0 0 0</pose>
+      <parent>quadrotor/base_link</parent>
+      <child>quadrotor/rotor_3</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='quadrotor/rotor_3'>
+      <pose relative_to='quadrotor/rotor_3_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0050000000000000001</mass>
+        <inertia>
+          <ixx>1.9500000000000001e-07</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.3340833333333338e-05</iyy>
+          <iyz>0</iyz>
+          <izz>3.3520833333333339e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='quadrotor/rotor_3_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0050000000000000001</length>
+            <radius>0.10000000000000001</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+          <collide_bitmask>0xff</collide_bitmask>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='quadrotor/rotor_3_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/motor_prop_assembly.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0 0 1 1</ambient>
+          <diffuse>0 0 1 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0 0 0 0</emissive>
+      </material>
+      </visual>
+    </link>
+    
+    
+    <plugin name='gz::sim::systems::MultiRotorPlugin' filename='rotor_plugin'>
+      <parentLink>quadrotor/base_link</parentLink>
+      <linkNames>quadrotor/rotor_0 quadrotor/rotor_1 quadrotor/rotor_2 quadrotor/rotor_3</linkNames>
+      <turningDirections>1 -1 -1 1</turningDirections>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>2246.0</maxRotVelocity>
+      <thrustConstantQuadraticParams>1.9533e-6 0 0</thrustConstantQuadraticParams>
+      
+      <groundEffectConstant>1.17198e-09</groundEffectConstant>
+      <momentConstantQuadraticParams>2.8400982e-08  0 0</momentConstantQuadraticParams>
+      <downWashCoefficients>0.0 0.0 0.0</downWashCoefficients>
+      <otherUavNames></otherUavNames>
+      <rotorInertia>4.92e-6</rotorInertia>
+      <rotorDragCoefficient>0.000020673</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-9</rollingMomentCoefficient>
+      <rotorVelocitySlowdownSim>2</rotorVelocitySlowdownSim>
+    </plugin>
+
+   
+    <!-- <plugin name='gz::sim::systems::Imu' filename='gz-sim-imu-system'/> -->
+    <frame name='cam_joint' attached_to='quadrotor/base_link'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='cam_link' attached_to='cam_joint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='imu_joint' attached_to='quadrotor/base_link'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='imu_link' attached_to='imu_joint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='quadrotor/base_joint' attached_to='quadrotor/base_link'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='quadrotor/base_link_inertia' attached_to='quadrotor/base_joint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+  </model>
+</sdf>
