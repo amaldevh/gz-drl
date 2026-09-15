@@ -9,7 +9,7 @@ GzDRL is a single-process reinforcement learning framework for Gazebo designed f
 </p>
 
 <p align="center">
-  <a href="paper.pdf"><strong>Manuscript</strong></a>
+  <a href="https://arxiv.org/abs/2609.13243"><strong>Manuscript</strong></a>
   &nbsp;·&nbsp;
   <a href="#citation"><strong>BibTeX</strong></a>
 </p>
@@ -124,14 +124,14 @@ Recommended final structure once the repository is ready:
 ## Citation
 
 ```bibtex
-@article{gzdrl2026,
-  title   = {GzDRL: Reproducible and Scalable Deep Reinforcement Learning with Gazebo},
-  author  = {Haridevan, Amal Dev and Kang, Junjie and Shan, Jinjun},
-  journal = {},
-  volume  = {},
-  number  = {},
-  month   = {},
-  year    = {}
+@misc{haridevan2026gzdrlreproduciblescalabledeep,
+      title={GzDRL: Reproducible and Scalable Deep Reinforcement Learning with Gazebo}, 
+      author={Amal Dev Haridevan and Junjie Kang and Jinjun Shan},
+      year={2026},
+      eprint={2609.13243},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2609.13243}, 
 }
 ```
 
