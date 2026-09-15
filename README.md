@@ -23,7 +23,7 @@ GzDRL is a single-process reinforcement learning framework for Gazebo designed f
 ## Getting started
 Visit our documentation website for full setup details;
 <p align="center">
-  <a href="https://amaldevh.github.io/GzDRL-docs/getting-started/installation.html"><strong>GzDRL Getting Started</strong></a>
+  <a href="https://gz-drl.readthedocs.io/en/latest/"><strong>GzDRL Getting Started</strong></a>
 </p>
 
 ### Requirements
