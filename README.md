@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/gzdrl-banner.png" width="1200" alt="GzDRL — Reproducible and Scalable Deep Reinforcement Learning with Gazebo; quadrotors flying through parallel simulation environments">
+</p>
+
 # GzDRL: Reproducible and Scalable Deep Reinforcement Learning with Gazebo
 
 **Amal Dev Haridevan · Junjie Kang · Jinjun Shan**
