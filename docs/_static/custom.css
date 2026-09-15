@@ -1,0 +1,10 @@
+/* Keep architecture figures legible on both light and dark backgrounds. */
+.architecture-figure img {
+  background: #fff;
+  padding: 0.5rem;
+}
+
+/* Tables keep technical identifiers intact and scroll on small screens. */
+.table-wrapper {
+  overflow-x: auto;
+}

@@ -1,0 +1,9 @@
+# Documentation builds do not install or import the native GzDRL package.
+Sphinx==8.1.3
+breathe==4.36.0
+furo==2025.12.19
+myst-parser==4.0.1
+PyYAML==6.0.2
+sphinx-copybutton==0.5.2
+sphinx-design==0.6.1
+tomli==2.2.1; python_version < "3.11"
