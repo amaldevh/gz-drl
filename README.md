@@ -18,8 +18,54 @@ GzDRL is a single-process reinforcement learning framework for Gazebo designed f
 
 ## Getting started
 Visit our documentation website for full setup details;
+<p align="center">
+  <a href="https://amaldevh.github.io/GzDRL-docs/getting-started/installation.html"><strong>GzDRL Getting Started</strong></a>
+</p>
 
-```https://amaldevh.github.io/GzDRL-docs``` 
+### Requirements
+- Ubuntu 22.04, 24.04
+- Gazebo Harmonic, Ionic, Jetty
+- Python 3.10-3.14
+- GNU toolkit 11
+- Optional ROS (Noetic, or any ROS 2)
+
+### Build
+Follow OSRF's
+[Gazebo Jetty binary installation for Ubuntu](https://gazebosim.org/docs/jetty/install_ubuntu/):
+```bash
+sudo apt-get update
+sudo apt-get install -y curl lsb-release gnupg
+sudo curl https://packages.osrfoundation.org/gazebo.gpg \
+  --output /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] https://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" \
+  | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
+sudo apt-get update
+sudo apt-get install -y gz-jetty
+```
+Install the non-Gazebo tools and libraries required for C++ and Python build:
+
+```bash
+sudo apt-get install -y \
+  build-essential cmake gcc-11 g++-11 git python3-dev python3-venv \
+  libeigen3-dev libgoogle-glog-dev
+```
+Clone the `gz-drl` repository and build a wheel in an isolated environment:
+
+```bash
+git clone --depth 1 https://github.com/amaldevh/gz-drl.git
+cd gz-drl
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip 
+python -m pip install . 
+```
+### Run an example
+The script creates monitored hover environments, applies
+`VecNormalize`, trains PPO, and saves checkpoints.
+```bash
+python -m pip install '.[rl]'
+python examples/rl/train_hover_policy.py
+```
 ## Overview
 
 Most Gazebo-based RL pipelines exchange actions and observations through ROS or Gazebo Transport. GzDRL instead interfaces directly with the Gazebo server and defines an explicit action → physics → observation sequence inside a single process.
@@ -92,34 +138,6 @@ The manuscript evaluates the framework across the following settings:
   <img src="assets/hardware-trajectories.webp" width="900" alt="Nine QDrone2 hardware trajectory-tracking trials">
 </p>
 
-## Installation and examples
-
-
-<!--
-Recommended final structure once the repository is ready:
-
-### Requirements
-- Supported Ubuntu version
-- Gazebo distribution and exact version
-- Python version
-- Compiler/CMake requirements
-- RL-library dependencies
-
-### Build
-```bash
-# exact repository commands
-```
-
-### Run an example
-```bash
-# exact repository commands
-```
-
-### Train a policy
-```bash
-# exact repository commands
-```
--->
 
 ## Citation
 
@@ -134,9 +152,3 @@ Recommended final structure once the repository is ready:
       url={https://arxiv.org/abs/2609.13243}, 
 }
 ```
-
-## Authors
-
-- Amal Dev Haridevan
-- Junjie Kang
-- Jinjun Shan
