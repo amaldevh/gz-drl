@@ -64,7 +64,7 @@ cd gz-drl
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install .
+python -m pip install '.[rl, examples]'
 ```
 
 `pip` invokes CMake through `scikit-build-core`. The installation contains:
