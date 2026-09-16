@@ -61,13 +61,12 @@ cd gz-drl
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip 
-python -m pip install . 
+python -m pip install '.[rl, examples]' 
 ```
 ### Run an example
 The script creates monitored hover environments, applies
 `VecNormalize`, trains PPO, and saves checkpoints.
 ```bash
-python -m pip install '.[rl]'
 python examples/rl/train_vectorized_hover_policy.py
 ```
 ## Overview
