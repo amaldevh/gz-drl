@@ -68,7 +68,7 @@ The script creates monitored hover environments, applies
 `VecNormalize`, trains PPO, and saves checkpoints.
 ```bash
 python -m pip install '.[rl]'
-python examples/rl/train_hover_policy.py
+python examples/rl/train_vectorized_hover_policy.py
 ```
 ## Overview
 
